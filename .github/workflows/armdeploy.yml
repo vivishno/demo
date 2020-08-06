@@ -1,0 +1,21 @@
+on: [push]
+
+name: AzureArmDeploySample
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - uses: azure/login@v1.1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: deploy arm template
+        id: arm_deploy
+        uses: mlopstemplates/arm_deploy@master
+        with:
+            resource_group: "demo"
+            template_file: "/.cloud/.azure/deploy.json"
+            parameter_file: "/.cloud/.azure/deploy.params.json"
