@@ -26,4 +26,4 @@ jobs:
     - name: Display deployment output details
       run: |
           echo deployment_status: "${{ steps.arm_deploy.outputs.deployment_status}}"
-          echo deployment_error: "${{ steps.arm_deploy.outputs.deployment_result}}"
+          echo deployment_result: "${{ steps.arm_deploy.outputs.deployment_result}}"
