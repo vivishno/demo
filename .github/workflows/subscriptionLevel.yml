@@ -21,7 +21,8 @@ jobs:
       with:
             scope: "subscription"
             template_file: "/.cloud/.azure/deploySub.json"
-         
+            location: "Central US"
+          
     - name: Display deployment output details
       run: |
           echo deployment_status: "${{ steps.arm_deploy.outputs.deployment_status}}"
