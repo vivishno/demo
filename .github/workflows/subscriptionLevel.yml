@@ -1,0 +1,28 @@
+on: [push]
+
+name: AzureArmDeploySample
+
+jobs:
+
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Check Out Repository
+      id: checkout_repository
+      uses: actions/checkout@v2
+      
+    - uses: azure/login@v1.1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+    
+    - name: deploy arm template
+      id: arm_deploy
+      uses: mlopstemplates/arm_deploy@master
+      with:
+            scope: "subscription"
+            template_file: "/.cloud/.azure/deploySub.json"
+         
+    - name: Display deployment output details
+      run: |
+          echo deployment_status: "${{ steps.arm_deploy.outputs.deployment_status}}"
+          echo deployment_error: "${{ steps.arm_deploy.outputs.deployment_error}}"
