@@ -7,7 +7,10 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-    
+    - name: Check Out Repository
+      id: checkout_repository
+      uses: actions/checkout@v2
+      
     - uses: azure/login@v1.1
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
@@ -18,5 +21,5 @@ jobs:
       with:
             scope: "resource_group"
             resource_group: "vivekdemo1"
-            template_file: ".cloud/.azure/deploy.json"
-            parameter_file: ".cloud/.azure/deploy.params.json"
+            template_file: "/.cloud/.azure/deploy.json"
+            parameter_file: "/.cloud/.azure/deploy.params.json"
