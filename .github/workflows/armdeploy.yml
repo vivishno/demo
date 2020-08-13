@@ -23,7 +23,7 @@ jobs:
             resource_group: "vivekdemo1"
             template_file: "/.cloud/.azure/deploy.json"
             parameter_file: "/.cloud/.azure/deploy.params.json"
-            parameters: "storageAccountName=testvivek0222"
+            parameters: "storageAccountName=testvivek02223"
             
     - name: Display deployment output details
       run: |
