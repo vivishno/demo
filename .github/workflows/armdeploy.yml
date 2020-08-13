@@ -23,4 +23,9 @@ jobs:
             resource_group: "vivekdemo1"
             template_file: "/.cloud/.azure/deploy.json"
             parameter_file: "/.cloud/.azure/deploy.params.json"
-            parameters: "storageAccountName=testvivek000000001"
+            parameters: "storageAccountName=testvivek0222"
+            
+    - name: Display deployment output details
+      run: |
+          echo deployment_status: "${{ steps.sampletest_sub.outputs.deployment_status}}"
+          echo deployment_error: "${{ steps.sampletest_sub.outputs.deployment_error}}"
