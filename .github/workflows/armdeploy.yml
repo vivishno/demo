@@ -16,6 +16,7 @@ jobs:
       id: arm_deploy
       uses: mlopstemplates/arm_deploy@master
       with:
+            scope: "resource_group"
             resource_group: "vivekdemo1"
             template_file: "/.cloud/.azure/deploy.json"
             parameter_file: "/.cloud/.azure/deploy.params.json"
