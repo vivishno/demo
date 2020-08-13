@@ -18,5 +18,5 @@ jobs:
       with:
             scope: "resource_group"
             resource_group: "vivekdemo1"
-            template_file: "/.cloud/.azure/deploy.json"
-            parameter_file: "/.cloud/.azure/deploy.params.json"
+            template_file: ".cloud/.azure/deploy.json"
+            parameter_file: ".cloud/.azure/deploy.params.json"
