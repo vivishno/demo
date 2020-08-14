@@ -32,10 +32,10 @@ jobs:
       uses: mlopstemplates/arm_deploy@master
       with:
             scope: "resource_group"
-            resource_group: "vivekdemo2"
+            resource_group: "demo"
             template_file: "/.cloud/.azure/deploy.json"
             parameter_file: "/.cloud/.azure/deploy.params.json"
-            parameters: "storageAccountName=vivekdemo123"
+            parameters: "storageAccountName=demovivek01"
             
     - name: Display deployment output details
       run: |
