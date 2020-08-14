@@ -16,7 +16,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
     
     - name: deploy arm template
-      id: arm_deploy
+      id: deploy_rescgrp
       uses: mlopstemplates/arm_deploy@master
       with:
             scope: "subscription"
@@ -25,5 +25,19 @@ jobs:
           
     - name: Display deployment output details
       run: |
-          echo deployment_status: "${{ steps.arm_deploy.outputs.deployment_status}}"
-          echo deployment_result: "${{ steps.arm_deploy.outputs.deployment_result}}"
+          echo deployment_status: "${{ steps.deploy_rescgrp.outputs.deployment_status}}"
+          echo deployment_result: "${{ steps.deploy_rescgrp.outputs.deployment_result}}"
+    - name: deploy arm template
+      id: deploy_storage
+      uses: mlopstemplates/arm_deploy@master
+      with:
+            scope: "resource_group"
+            resource_group: "vivekdemo2"
+            template_file: "/.cloud/.azure/deploy.json"
+            parameter_file: "/.cloud/.azure/deploy.params.json"
+            parameters: "storageAccountName=vivekdemo123"
+            
+    - name: Display deployment output details
+      run: |
+          echo deployment_status: "${{ steps.deploy_storage.outputs.deployment_status}}"
+          echo deployment_result: "${{ steps.deploy_storage.outputs.deployment_result}}"      
